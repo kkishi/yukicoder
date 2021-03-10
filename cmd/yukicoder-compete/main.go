@@ -129,8 +129,13 @@ func createDirs(c Contest) error {
 				return err
 			}
 		}
-		if err := os.Symlink(path.Join("..", "..", pdir), path.Join(cdir, (string)([]byte{byte('a' + i)}))); err != nil {
+		symLink := path.Join(cdir, (string)([]byte{byte('a' + i)}))
+		if e, err := exists(symLink); err != nil {
 			return err
+		} else if !e {
+			if err := os.Symlink(path.Join("..", "..", pdir), symLink); err != nil {
+				return err
+			}
 		}
 	}
 	return nil
