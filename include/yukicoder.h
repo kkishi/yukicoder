@@ -1,5 +1,8 @@
 #include <iomanip>
 
+#include "debug.h"
+#include "fix.h"
+#include "io.h"
 #include "macros.h"
 
 void Main();
