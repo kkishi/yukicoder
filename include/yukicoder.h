@@ -1,4 +1,3 @@
-#include <boost/hana/functional/fix.hpp>
 #include <iomanip>
 
 #include "macros.h"
@@ -12,8 +11,6 @@ int main() {
   Main();
   return 0;
 }
-
-const auto& Fix = boost::hana::fix;
 
 using namespace std;
 
