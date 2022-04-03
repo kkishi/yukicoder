@@ -13,14 +13,14 @@ void Main() {
     g.AddEdge(u, v);
     g.AddEdge(v, u);
   }
-  HeavyLightDecomposition hld(g);
+  HeavyLightDecomposition hld(g, attr_on_node);
   add_sum::segtree t(V<int>(n, 1));
   ints(q);
   int ans = 0;
   rep(q) {
     ints(a, b);
     --a, --b;
-    each(l, r, hld.Query(a, b, true)) {
+    each(l, r, hld.Path(a, b)) {
       ans += t.prod(l, r).val;
       t.apply(l, r, 1);
     }

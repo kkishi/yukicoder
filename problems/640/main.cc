@@ -28,7 +28,7 @@ void Main() {
     g.AddEdge(a, b);
     g.AddEdge(b, a);
   }
-  HeavyLightDecomposition hld(g);
+  HeavyLightDecomposition hld(g, attr_on_node);
   segtree t(n);
   rep(i, n) t.set(hld.Index(i), {s[i], c[i]});
   ints(q);
@@ -37,12 +37,12 @@ void Main() {
     if (k == 0) {
       ints(x, y, z);
       --x, --y;
-      each(l, r, hld.Query(x, y, true)) t.apply(l, r, z);
+      each(l, r, hld.Path(x, y)) t.apply(l, r, z);
     } else {
       ints(x, y);
       --x, --y;
       mint ans = 0;
-      each(l, r, hld.Query(x, y, true)) ans += t.prod(l, r).first;
+      each(l, r, hld.Path(x, y)) ans += t.prod(l, r).first;
       wt(ans);
     }
   }
